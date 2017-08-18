@@ -32,6 +32,7 @@
 		29E2CDF51DC7B4E300A9E0F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E2CDF31DC7B4E300A9E0F4 /* LaunchScreen.storyboard */; };
 		4E5F852CC0CB83A4C2F8AE7F /* Pods_Marslink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C715FCAFBD8A3010CBEC1EE4 /* Pods_Marslink.framework */; };
 		FCA15086FEED7E742CC4F498 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA150B6618EAB1B530A1028 /* FeedViewController.swift */; };
+		FCA1512FF6BFFE9017603434 /* WeatherSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15CDF9E4943CF98DBC0E9 /* WeatherSectionController.swift */; };
 		FCA153569D78F83C3877E0B5 /* MessageSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA15A5AAA97CA0839508D9D /* MessageSectionController.swift */; };
 		FCA15809AF5331A49C707C78 /* JournalSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA151FCF1122E20B138F26F /* JournalSectionController.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		FCA150B6618EAB1B530A1028 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FCA151FCF1122E20B138F26F /* JournalSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalSectionController.swift; sourceTree = "<group>"; };
 		FCA15A5AAA97CA0839508D9D /* MessageSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSectionController.swift; sourceTree = "<group>"; };
+		FCA15CDF9E4943CF98DBC0E9 /* WeatherSectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSectionController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			children = (
 				FCA151FCF1122E20B138F26F /* JournalSectionController.swift */,
 				FCA15A5AAA97CA0839508D9D /* MessageSectionController.swift */,
+				FCA15CDF9E4943CF98DBC0E9 /* WeatherSectionController.swift */,
 			);
 			name = SectionControllers;
 			path = Marslink/SectionControllers;
@@ -354,6 +357,7 @@
 				FCA15086FEED7E742CC4F498 /* FeedViewController.swift in Sources */,
 				FCA15809AF5331A49C707C78 /* JournalSectionController.swift in Sources */,
 				FCA153569D78F83C3877E0B5 /* MessageSectionController.swift in Sources */,
+				FCA1512FF6BFFE9017603434 /* WeatherSectionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@ import IGListKit
 
 class FeedViewController: UIViewController {
     let loader = JournalEntryLoader()
+    let wxScanner = WxScanner()
 
     // 1
     let collectionView: IGListCollectionView = {
@@ -30,6 +31,8 @@ class FeedViewController: UIViewController {
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         adapter.dataSource = self
+        pathfinder.delegate = self
+        pathfinder.connect()
     }
 
     //viewDidLayoutSubviews() is overridden, setting the collectionView frame to match the view bounds
@@ -40,20 +43,31 @@ class FeedViewController: UIViewController {
 }
 
 
-
-
 extension FeedViewController: IGListAdapterDataSource {
     // 1
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-        var items: [IGListDiffable] = pathfinder.messages
+//        var items: [IGListDiffable] = pathfinder.messages
+//        items += loader.entries as [IGListDiffable]
+//        return items
+        // 1
+        var items: [IGListDiffable] = [wxScanner.currentWeather]
         items += loader.entries as [IGListDiffable]
-        return items
+        items += pathfinder.messages as [IGListDiffable]
+// 2
+        return items.sorted(by: { (left: Any, right: Any) -> Bool in
+            if let left = left as? DateSortable, let right = right as? DateSortable {
+                return left.date > right.date
+            }
+            return false
+        })
     }
 
     // 2
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
         if object is Message {
             return MessageSectionController()
+        } else if object is Weather {
+            return WeatherSectionController()
         } else {
             return JournalSectionController()
         }
@@ -62,5 +76,12 @@ extension FeedViewController: IGListAdapterDataSource {
     // 3
     func emptyView(for listAdapter: IGListAdapter) -> UIView? {
         return nil
+    }
+}
+
+
+extension FeedViewController: PathfinderDelegate {
+    func pathfinderDidUpdateMessages(pathfinder: Pathfinder) {
+        adapter.performUpdates(animated: true)
     }
 }
