@@ -22,6 +22,8 @@ class FeedViewController: UIViewController {
         return IGListAdapter(updater: IGListAdapterUpdater(), viewController: self, workingRangeSize: 0)
     }()
 
+    let pathfinder = Pathfinder()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loader.loadLatest()
@@ -43,12 +45,18 @@ class FeedViewController: UIViewController {
 extension FeedViewController: IGListAdapterDataSource {
     // 1
     func objects(for listAdapter: IGListAdapter) -> [IGListDiffable] {
-        return loader.entries
+        var items: [IGListDiffable] = pathfinder.messages
+        items += loader.entries as [IGListDiffable]
+        return items
     }
 
     // 2
     func listAdapter(_ listAdapter: IGListAdapter, sectionControllerFor object: Any) -> IGListSectionController {
-        return JournalSectionController()
+        if object is Message {
+            return MessageSectionController()
+        } else {
+            return JournalSectionController()
+        }
     }
 
     // 3
